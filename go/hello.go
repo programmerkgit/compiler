@@ -39,6 +39,7 @@ func main() {
 }
 
 /* FunctionDecl = "func" FunctionName Signature [FunctionBody] . */
+/* FunctionType = "func" Signature */
 /* Signature = Parametes [Result] */
 /* Result =  Parametes | Type */
 /* Parameters = "(" [ParameterList [,]] ")"  */
@@ -46,6 +47,29 @@ func main() {
 /* ParameterDecl = [IdentifierList] [ "..." ] Type */
 /* IdentifierList = Identifier {"," Identifier} */
 /* Identifier = letter {letter | unicode_digit } */
+
+func funcdecl() int {
+	a := funcName(1, 2, 3)
+	return a
+}
+func funcName(a, b, c int) int {
+	d := a * b * c
+	return d
+}
+
+/* MethodDecl = "func" Receiver FuncName Signature [FunctionBody] */
+/* Receivers = Parameters */
+
+type vertex1 struct {
+	a, b int
+}
+type Vertex2 struct {
+	a, b int
+}
+
+func (a vertex1) methoddecl() int {
+	return a.a
+}
 
 /* InterfaceType = "interface" "{" { MethodSpec";"} "}" */
 /* MethodSpec = MethodName Signature | InterfaceName */
@@ -69,7 +93,7 @@ func varDecl() {
 /* PostStmt = SimpleStmt
 /* RangeClause = [ ExpressionList "=" | IdentifierList ":="] "range" Expression */
 
-func funcname(a, b, c int) (d, e int) {
+func forstmt(a, b, c int) (d, e int) {
 	for 1 < 2 {
 
 	}
@@ -116,6 +140,43 @@ func deferstmt() {
 	defer println("defferred")
 	println("start")
 }
+
+func structStmt() {
+	type StructNm struct {
+		A int
+		B int
+	}
+	a := StructNm{2, 3}
+	p := &a
+	fmt.Println((*p).A)
+}
+
+/* ArrayType = "["ArrayLength "]" ElementType */
+/* ArrayLength = Expression */
+/* ElementType = Type */
+
+func arraydec() {
+	a := [3]bool{true, false, true && false}
+	println(a[1:], cap(a), len(a))
+}
+
+/* MapType = "map" "[" KeyType "]" ElementType */
+/* KeyType = Type */
+/* ElementType = Type */
+
+func maptype() {
+	m := map[int]int{1: 2}
+	fmt.Println(m[1])
+}
+
+/* init_lit */
+/* decimal_lit = ("1"..."9") {decimal_digit} */
+/* octal_lint = "0" {octal_digit} */
+/* hex_lit = "0" ("x" | "X") hex_digit {hex_digit} */
+/* digit */
+/* decimal_digit = "0"..."9" */
+/* octal_digit = "0"..."7" */
+/* hex_digit = "0"..."9" | "A" ... "F"  | "a"..."f" * /
 
 /* Go Basic Types */
 /*
