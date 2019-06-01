@@ -36,7 +36,6 @@ func main() {
 		n3
 	)
 	fmt.Println(string(x), y, z, t, i, a, b, 2222, n, n2, n3, a, b, c)
-
 }
 
 /* FunctionDecl = "func" FunctionName Signature [FunctionBody] . */
@@ -54,6 +53,70 @@ func main() {
 /* VarDecl = "var" (VarSpec | "("{ VarSpec [;]} ")") */
 /* VarSpec = IdentifeierList (Type ["=" ExpressionList] | "=" ExpressionList )*/
 /* ConstSpec = IdentifierList [[Type] "=" ExpressionList] */
+
+func varDecl() {
+	var (
+		abcd, bcde, cdef int
+		defg             = ""
+	)
+	println(abcd, bcde, cdef, defg)
+}
+
+/* ForStmt = "for" [Condition | ForClause | RangeClause] Block */
+/* Condition = Expression */
+/* ForClause = [InitStmt] ";" [Condition]";" [PostStmt]  */
+/* InitStmt = SimpleStmt */
+/* PostStmt = SimpleStmt
+/* RangeClause = [ ExpressionList "=" | IdentifierList ":="] "range" Expression */
+
+func funcname(a, b, c int) (d, e int) {
+	for 1 < 2 {
+
+	}
+	for i := 0; 2 < 3; i++ {
+
+	}
+	words := []string{"a", "b", "c"}
+	var f string
+	for _, f = range words {
+		fmt.Println(f)
+	}
+	return 3, 5
+}
+
+/* IfStmt = "if" [SimpleStmt ";"] Expression Block ["else" (IfStmt | Block) ] */
+func ift() {
+	if x := 3; x < 4 {
+
+	}
+}
+
+/* SwitchStmt = "switch" [ SimpleStmt ";"] [Expression] "{" {ExprCaseClause} "}" */
+/* ExprCaseClause = ExpreSwitchCase ":" StatementList */
+/* ExprSwitchCase = "case" ExpressionList | "default" */
+func switchstmt() {
+	switch x := 2; x {
+	case 2, 5, 8:
+		println(x)
+	case 3:
+		println(x)
+	default:
+		println(x)
+	}
+	switch {
+	case time.Now().Hour() < 12:
+		println(3)
+	default:
+		println("default")
+	}
+}
+
+/* DeferStmt = "defer" Expression */
+func deferstmt() {
+	defer println("defferred")
+	println("start")
+}
+
 /* Go Basic Types */
 /*
 
